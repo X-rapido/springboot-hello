@@ -47,13 +47,13 @@ public class IndexController {
         return "嗨，你好😊。";
     }
 
-    /**
+     /**
      * 测试慢执行
      */
     @RequestMapping("/hello/cycle")
-    public String helloCycle(String stop) throws InterruptedException {
+    public String helloCycle(@RequestParam Integer cycle) throws InterruptedException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < cycle; i++) {
             TimeUnit.MILLISECONDS.sleep(10);
             System.out.println(i + " 嗨，你好 " + LocalDateTime.now().format(dtf));
         }
